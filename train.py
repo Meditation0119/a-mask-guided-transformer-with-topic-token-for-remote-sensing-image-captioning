@@ -22,7 +22,6 @@ import eval_utils
 import misc.utils as utils
 from misc.rewards import init_scorer, get_self_critical_reward
 from misc.loss_wrapper import LossWrapper
-from create_vgg_extractor import create_extractor
 from models.VitModel import VisionTransformer
 try:
     import tensorboardX as tb
