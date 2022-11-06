@@ -62,19 +62,7 @@ def build_vocab(imgs, params):
     print('total words:', total_words)
     counter = Counter(counts)
     vocab=[]
-    # bad_words = [w for w, n in counts.items() if n <= count_thr]
-    # vocab = counter.most_common(1256)
-    # vocab = [word[0] for word in vocab]
-    attribute_file=open('data/word2index_new.txt','r')
-    attribute_index=eval(attribute_file.read())
-    vocab=[attribute for attribute in attribute_index.keys()]
-    for w, n in counts.items():
-        if n > count_thr and w not in vocab:
-            vocab.append(w)
-    vocab2=set(vocab)
-    #vocab = [w for w, n in counts.items() if n > count_thr and w not in vocab]
-    #vocab = [w for w, n in counts.items() if n > count_thr]
-    # vocab = [w for w, n in counts.items() if w in right_words]
+    vocab = [w for w, n in counts.items() if n > count_thr]
     bad_count = sum(n for w, n in counts.items() if w not in vocab)
     # print('number of bad words: %d/%d = %.2f%%' % (len(bad_words), len(counts), len(bad_words) * 100.0 / len(counts)))
     print('number of words in vocab would be %d' % (len(vocab),))
